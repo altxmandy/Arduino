@@ -32,9 +32,9 @@ porta.on("open", () => {
 });
 
 //chegando qualquer byte do arduino, ele vai ser chamado, e vai ser chamado varias vezes, cada vez que chega um byte
-// split("\n") → quebra o texto acumulado em um array de linhas completas (tudo que terminou com \n).
+// split("\n") quebra o texto acumulado em um array de linhas completas (tudo que terminou com \n).
 
-// pop() → remove o último item do array (que é a linha incompleta, ainda sem \n) e o devolve.
+// pop() remove o último item do array (que é a linha incompleta, ainda sem \n) e o devolve.
 porta.on("data", (data) => {
     linha += data.toString();
 
