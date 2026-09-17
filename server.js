@@ -9,7 +9,7 @@ const { SerialPort } = require("serialport");
 
 const app = express();
 const porta = new SerialPort({
-    path: "COM3",
+    path: "???",
     baudRate: 9600
 });
 
