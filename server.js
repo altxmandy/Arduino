@@ -28,7 +28,7 @@ let linha = "";
 
 porta.on("open", () => {
     dados.conectado = true;
-    console.log("Arduino conectado!");
+    console.log("Arduino conectado");
 });
 
 //chegando qualquer byte do arduino, ele vai ser chamado, e vai ser chamado varias vezes, cada vez que chega um byte
@@ -67,7 +67,7 @@ porta.on("data", (data) => {
 // evento porte desconectada do arduino
 porta.on("close", () => {
     dados.conectado = false;
-    console.log("Arduino desconectado!");
+    console.log("Arduino desconectado");
 });
 
 // caso n tenha nada conectado
