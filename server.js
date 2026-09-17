@@ -9,7 +9,7 @@ const { SerialPort } = require("serialport");
 
 const app = express();
 const porta = new SerialPort({
-    path: "???",
+    path: process.env.ARDUINO_PORT || "COM5",
     baudRate: 9600
 });
 
@@ -45,21 +45,18 @@ porta.on("data", (data) => {
         texto = texto.trim();
 
         if (texto.startsWith("Tensao no LDR:")) {
-            dados.tensao = parseFloat(
-                texto.replace("Tensao no LDR:", "").replace("V", "")
-            );
+            const valor = texto.match(/-?\d+(?:\.\d+)?/);
+            if (valor) dados.tensao = parseFloat(valor[0]);
         }
 
         if (texto.startsWith("Lux minimo estimado:")) {
-            dados.luxMin = parseFloat(
-                texto.replace("Lux minimo estimado:", "")
-            );
+            const valor = texto.match(/-?\d+(?:\.\d+)?/);
+            if (valor) dados.luxMin = parseFloat(valor[0]);
         }
 
         if (texto.startsWith("Lux maximo estimado:")) {
-            dados.luxMax = parseFloat(
-                texto.replace("Lux maximo estimado:", "")
-            );
+            const valor = texto.match(/-?\d+(?:\.\d+)?/);
+            if (valor) dados.luxMax = parseFloat(valor[0]);
         }
     });
 });
