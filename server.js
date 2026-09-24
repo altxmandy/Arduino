@@ -10,7 +10,8 @@ const { SerialPort } = require("serialport");
 const app = express();
 const porta = new SerialPort({
     path: process.env.ARDUINO_PORT || "COM5",
-    baudRate: 9600
+    baudRate: 9600,
+    autoOpen: false
 });
 
 //estado global, pega os ultimos valores lidos do arduino, é guardado apenas o ultimo valor
@@ -22,6 +23,20 @@ let dados = {
 };
 
 let linha = "";
+let tentandoConectar = false;
+
+function tentarConectar() {
+    if (porta.isOpen || tentandoConectar) return;
+
+    tentandoConectar = true;
+    porta.open((erro) => {
+        tentandoConectar = false;
+
+        if (erro) {
+            dados.conectado = false;
+        }
+    });
+}
 //chunks
 
 //evento da porta
@@ -46,7 +61,13 @@ porta.on("data", (data) => {
 
         if (texto.startsWith("Tensao no LDR:")) {
             const valor = texto.match(/-?\d+(?:\.\d+)?/);
-            if (valor) dados.tensao = parseFloat(valor[0]);
+            if (valor) {
+                if (texto.endsWith(" V")) {
+                    dados.tensao = parseFloat(valor[0]);
+                } else {
+                    dados.luxMin = parseFloat(valor[0]);
+                }
+            }
         }
 
         if (texto.startsWith("Lux minimo estimado:")) {
@@ -64,6 +85,9 @@ porta.on("data", (data) => {
 // evento porte desconectada do arduino
 porta.on("close", () => {
     dados.conectado = false;
+    dados.tensao = 0;
+    dados.luxMin = 0;
+    dados.luxMax = 0;
     console.log("Arduino desconectado");
 });
 
@@ -72,6 +96,9 @@ porta.on("error", (erro) => {
     dados.conectado = false;
     console.log("Arduino não conectado.");
 });
+
+tentarConectar();
+setInterval(tentarConectar, 2000);
 // express, ele vai direcionar onde esta essa pasta para saber direcionar ao html
 app.use(express.static(__dirname));
 

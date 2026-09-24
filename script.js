@@ -16,6 +16,9 @@ async function atualizarDados() {
     } else {
         document.getElementById("status").textContent =
             "Arduino não conectado.";
+        document.getElementById("tensao").textContent = 0;
+        document.getElementById("luxMin").textContent = 0;
+        document.getElementById("luxMax").textContent = 0;
     }
 }
 
