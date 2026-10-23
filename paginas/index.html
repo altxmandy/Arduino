@@ -4,34 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titulo ai ldr</title>
+    <title>AILux - Projeto integrador</title>
+
+    <link rel="stylesheet" href="../estilo/estilo.css">
 </head>
 
 <body>
 
     <header>
-        <h1>Título aiii</h1>
+        <div class="logo"></div>
+        <h1>AILux - Projeto integrador</h1>
     </header>
 
+    <nav>
+        <a href="sobre.html">Sobre Projeto</a>
+        <a href="index.html" class="pagina-atual">Página Inicial</a>
+        <a href="equipe.html">Equipe</a>
+    </nav>
+
     <main>
+        <section class="painel">
 
-        <section>
-            <h2>Dados do Arduino</h2>
+            <div class="titulo">
+                <h2>Dados de intensidade luminosa</h2>
+                <p>Leitura atual do LDR conectado ao Arduino:</p>
+            </div>
 
-            <p>Tensão no LDR: <strong id="tensao">--</strong> V</p>
+            <div class="cartoes">
 
-            <p>Lux mínimo estimado: <strong id="luxMin">--</strong></p>
+                <article class="cartao">
+                    <h3>Tensão no LDR</h3>
+                    <p><strong id="tensao">--</strong> V</p>
+                </article>
 
-            <p>Lux máximo estimado: <strong id="luxMax">--</strong></p>
+                <article class="cartao">
+                    <h3>Lux Mínimo Estimado</h3>
+                    <p><strong id="luxMin">--</strong> Lux</p>
+                </article>
+
+                <article class="cartao">
+                    <h3>Lux Máximo Estimado</h3>
+                    <p><strong id="luxMax">--</strong> Lux</p>
+                </article>
+
+            </div>
+
+            <footer>
+                <p class="status-titulo">Status da conexão</p>
+                <p id="status">Verificando conexão...</p>
+            </footer>
+
         </section>
-
-        <footer>
-            <p id="status">Verificando conexão...</p>
-        </footer>
-
     </main>
 
-   <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 
 </body>
 

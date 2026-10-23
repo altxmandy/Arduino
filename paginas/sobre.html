@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Projeto - AILux</title>
+
+    <link rel="stylesheet" href="../estilo/estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"></div>
+        <h1>AILux - Projeto integrador</h1>
+    </header>
+
+    <nav>
+        <a href="sobre.html" class="pagina-atual">Sobre Projeto</a>
+        <a href="index.html">Página Inicial</a>
+        <a href="equipe.html">Equipe</a>
+    </nav>
+
+    <main class="pagina-sobre">
+
+    <div class="topicos" role="tablist" aria-label="Sobre o projeto">
+        <button type="button" id="aba1" class="topico ativo"
+            role="tab" aria-selected="true" aria-controls="texto1">
+            Tópico 1
+        </button>
+
+        <button type="button" id="aba2" class="topico"
+            role="tab" aria-selected="false" aria-controls="texto2">
+            Tópico 2
+        </button>
+
+        <button type="button" id="aba3" class="topico"
+            role="tab" aria-selected="false" aria-controls="texto3">
+            Tópico 3
+        </button>
+
+        <button type="button" id="aba4" class="topico"
+            role="tab" aria-selected="false" aria-controls="texto4">
+            Tópico 4
+        </button>
+    </div>
+
+    <div class="conteudos-sobre">
+
+        <section id="texto1" class="conteudo-topico"
+            role="tabpanel" aria-labelledby="aba1" tabindex="0">
+            <p>Coloque aqui o texto do primeiro tópico.</p>
+        </section>
+
+        <section id="texto2" class="conteudo-topico"
+            role="tabpanel" aria-labelledby="aba2" tabindex="0" hidden>
+            <p>Coloque aqui o texto do segundo tópico.</p>
+        </section>
+
+        <section id="texto3" class="conteudo-topico"
+            role="tabpanel" aria-labelledby="aba3" tabindex="0" hidden>
+            <p>Coloque aqui o texto do terceiro tópico.</p>
+        </section>
+
+        <section id="texto4" class="conteudo-topico"
+            role="tabpanel" aria-labelledby="aba4" tabindex="0" hidden>
+            <p>Coloque aqui o texto do quarto tópico.</p>
+        </section>
+
+    </div>
+
+</main>
+
+<script src="../js/sobre.js"></script>
+</body>
+
+</html>

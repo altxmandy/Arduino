@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=42dot+Sans:wght@400;700&family=Inria+Serif:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #FAFCDC;
+    color: #29455E;
+    font-family: "42dot Sans", Arial, sans-serif;
+}
+
+/* Cabeçalho */
+
+header {
+    height: 80px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid rgba(41, 69, 94, 0.1);
+}
+
+.logo {
+    position: absolute;
+    left: 44px;
+    width: 44px;
+    height: 44px;
+    background-color: #29455E;
+    border-radius: 50%;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+/* Menu */
+
+nav {
+    height: 49px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-color: #C7C59F;
+}
+
+nav a {
+    color: #424242;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+nav .pagina-atual {
+    color: #29455E;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Painel principal */
+
+main {
+    padding: 95px 0 60px;
+}
+
+.painel {
+    width: 81.6667%;
+    max-width: 1176px;
+    margin: 0 auto;
+    padding: 32px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.titulo h2 {
+    margin-bottom: 6px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.titulo p {
+    color: rgba(66, 66, 66, 0.72);
+    font-size: 24px;
+}
+
+/* Cartões */
+
+.cartoes {
+    display: flex;
+    gap: 31px;
+    margin-top: 28px;
+}
+
+.cartao {
+    flex: 1;
+    min-width: 0;
+    height: 223px;
+    padding: 37px 16px 24px;
+    background-color: #E8E8E8;
+    border: 1px solid rgba(41, 69, 94, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.cartao h3 {
+    color: #424242;
+    font-family: "Inria Serif", Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.cartao:first-child h3 {
+    color: #29455E;
+}
+
+.cartao>p {
+    margin-top: 25px;
+    color: #29455E;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+/* Status */
+
+footer {
+    margin-top: 28px;
+    padding: 20px;
+}
+
+.status-titulo {
+    margin-bottom: 4px;
+    color: rgba(66, 66, 66, 0.72);
+    font-size: 14px;
+}
+
+#status {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Celular */
+
+@media (max-width: 700px) {
+    header {
+        padding: 0 55px;
+    }
+
+    header h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .logo {
+        left: 16px;
+        width: 30px;
+        height: 30px;
+    }
+
+    nav {
+        gap: 20px;
+    }
+
+    nav a,
+    nav .pagina-atual {
+        font-size: 16px;
+    }
+
+    main {
+        padding-top: 40px;
+    }
+
+    .painel {
+        width: 92%;
+        padding: 24px 16px;
+    }
+
+    .titulo h2 {
+        font-size: 30px;
+    }
+
+    .titulo p {
+        font-size: 18px;
+    }
+
+    .cartoes {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cartao {
+        flex: auto;
+        width: 100%;
+        height: 200px;
+    }
+
+    .cartao>p {
+        font-size: 40px;
+    }
+}
+
+
+/* Página Sobre Projeto */
+
+.pagina-sobre {
+    padding: 74px 0 60px;
+}
+
+.topicos {
+    width: 84.7222%;
+    max-width: 1220px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.topico {
+    width: 254px;
+    min-height: 55px;
+    padding: 8px 16px;
+
+    background-color: #B5C7D3;
+    color: #29455E;
+    border: none;
+    border-radius: 30px;
+
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+}
+
+.topico.ativo {
+    background-color: #29455E;
+    color: #FFFFFF;
+}
+
+.topico:focus-visible {
+    outline: 3px solid #29455E;
+    outline-offset: 4px;
+}
+
+.conteudos-sobre {
+    width: 84.7222%;
+    max-width: 1220px;
+    margin: 40px auto 0;
+}
+
+.conteudo-topico {
+    padding: 32px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    color: #29455E;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.conteudo-topico p+p {
+    margin-top: 16px;
+}
+
+/* Celular */
+
+@media (max-width: 700px) {
+    .pagina-sobre {
+        padding-top: 40px;
+    }
+
+    .topicos {
+        width: 92%;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .topico {
+        width: 254px;
+        min-height: 55px;
+        padding: 8px 16px;
+
+        background-color: #B5C7D3;
+        color: #29455E;
+        border: none;
+        border-radius: 30px;
+
+        font-family: inherit;
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .topico.ativo {
+        background-color: #29455E;
+        color: #FFFFFF;
+    }
+
+    .topico:focus-visible {
+        outline: 3px solid #29455E;
+        outline-offset: 4px;
+    }
+
+    .conteudos-sobre {
+        width: 84.7222%;
+        max-width: 1220px;
+        margin: 40px auto 0;
+    }
+
+    .conteudo-topico {
+        padding: 32px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        color: #29455E;
+        font-size: 20px;
+        line-height: 1.7;
+    }
+
+    .conteudo-topico p+p {
+        margin-top: 16px;
+    }
+}
+
+/* Página da equipe */
+
+.pagina-equipe {
+    padding: 54px 0 64px;
+}
+
+.faixa-equipe {
+    min-height: 140px;
+    padding: 20px 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    background: linear-gradient(
+        to right,
+        #29455E,
+        #B5C7D3 50%,
+        #FAFCDC 85%
+    );
+}
+
+.faixa-equipe h2 {
+    color: #29455E;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: right;
+}
+
+.apresentacao-equipe {
+    width: 90%;
+    max-width: 1300px;
+    margin: 64px auto 0;
+
+    display: grid;
+    grid-template-columns: 270px minmax(0, 1fr);
+    align-items: start;
+    gap: 64px;
+}
+
+.texto-equipe {
+    padding-top: 12px;
+}
+
+.texto-equipe p {
+    color: #29455E;
+    font-size: 32px;
+    line-height: 1.5;
+}
+
+.texto-equipe strong {
+    font-weight: 700;
+}
+
+
+
+
+/* Grade com os seis integrantes */
+
+.integrantes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.integrante {
+    padding: 24px 18px 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    background-color: #E8E8E8;
+    border: 1px solid rgba(41, 69, 94, 0.1);
+    border-radius: 8px;
+}
+
+.foto-integrante {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+
+    background-color: #FFFFFF;
+    border-radius: 50%;
+}
+
+.foto-integrante img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-integrante {
+    width: 100%;
+    flex: 1;
+    padding: 16px 10px;
+
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.info-integrante h3 {
+    margin-bottom: 8px;
+    color: #29455E;
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.info-integrante p {
+    color: #424242;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Tablets */
+
+@media (max-width: 1100px) {
+    .apresentacao-equipe {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 40px;
+    }
+
+    .texto-equipe {
+        max-width: 700px;
+        padding-top: 0;
+    }
+
+    .texto-equipe p {
+        font-size: 28px;
+    }
+}
+
+/* Celular */
+
+@media (max-width: 700px) {
+    .pagina-equipe {
+        padding-top: 32px;
+    }
+
+    .faixa-equipe {
+        min-height: 120px;
+        padding: 20px 6%;
+    }
+
+    .faixa-equipe h2 {
+        font-size: 34px;
+    }
+
+    .texto-equipe p {
+        font-size: 24px;
+    }
+
+    .integrantes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .integrante {
+        padding: 20px 12px 12px;
+        gap: 16px;
+    }
+
+    .foto-integrante {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info-integrante h3 {
+        font-size: 18px;
+    }
+
+    .info-integrante p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    .integrantes {
+        grid-template-columns: 1fr;
+    }
+}
