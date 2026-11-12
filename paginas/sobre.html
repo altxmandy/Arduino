@@ -24,55 +24,139 @@
 
     <main class="pagina-sobre">
 
-    <div class="topicos" role="tablist" aria-label="Sobre o projeto">
-        <button type="button" id="aba1" class="topico ativo"
-            role="tab" aria-selected="true" aria-controls="texto1">
-            Tópico 1
-        </button>
+        <div class="topicos" role="tablist" aria-label="Sobre o projeto">
+            <button type="button" id="aba1" class="topico ativo" role="tab" aria-selected="true" aria-controls="texto1">
+                Apresentação
+            </button>
 
-        <button type="button" id="aba2" class="topico"
-            role="tab" aria-selected="false" aria-controls="texto2">
-            Tópico 2
-        </button>
+            <button type="button" id="aba2" class="topico" role="tab" aria-selected="false" aria-controls="texto2">
+                Objetivo
+            </button>
 
-        <button type="button" id="aba3" class="topico"
-            role="tab" aria-selected="false" aria-controls="texto3">
-            Tópico 3
-        </button>
+            <button type="button" id="aba3" class="topico" role="tab" aria-selected="false" aria-controls="texto3">
+                Materiais
+            </button>
 
-        <button type="button" id="aba4" class="topico"
-            role="tab" aria-selected="false" aria-controls="texto4">
-            Tópico 4
-        </button>
-    </div>
+            <button type="button" id="aba4" class="topico" role="tab" aria-selected="false" aria-controls="texto4">
+                Como Funciona
+            </button>
+        </div>
 
-    <div class="conteudos-sobre">
+        <div class="conteudos-sobre">
 
-        <section id="texto1" class="conteudo-topico"
-            role="tabpanel" aria-labelledby="aba1" tabindex="0">
-            <p>Coloque aqui o texto do primeiro tópico.</p>
-        </section>
+            <section id="texto1" class="conteudo-topico" role="tabpanel" aria-labelledby="aba1" tabindex="0">
+                <p>O projeto AiLux tem como base a construção de um luxímetro a partir de um Arduino Uno e um resistor
+                    LDR (Light Dependant Resistor) e, também, apresentar a leitura dos dados do Arduino em um Site. Para
+                    isso, utilizamos recursos como JavaScript, HTML, CSS e Linguagem C++ (utilizada pelo Arduino).</p>
+                <p>A medida da iluminância foi feita através da sensibilidade do resistor LDR perante a luz, isto é, à
+                    medida que o componente é exposto a esse fenômeno, sua resistência diminui, diminuindo a tensão
+                    entre seus pontos. A partir da medida da DDP, o Arduino transforma esse dado em Lux e, o Site
+                    apresenta essa informação para o usuário.</p>
+            </section>
 
-        <section id="texto2" class="conteudo-topico"
-            role="tabpanel" aria-labelledby="aba2" tabindex="0" hidden>
-            <p>Coloque aqui o texto do segundo tópico.</p>
-        </section>
+            <section id="texto2" class="conteudo-topico" role="tabpanel" aria-labelledby="aba2" tabindex="0" hidden>
+                <p>Coloque aqui o texto do segundo tópico.</p>
+            </section>
 
-        <section id="texto3" class="conteudo-topico"
-            role="tabpanel" aria-labelledby="aba3" tabindex="0" hidden>
-            <p>Coloque aqui o texto do terceiro tópico.</p>
-        </section>
+            <section id="texto3" class="conteudo-topico" role="tabpanel" aria-labelledby="aba3" tabindex="0" hidden>
+                <p>Neste projeto, utilizamos:</p>
+                <ul>
+                    <li>Arduino UNO</li>
+                    <li>Resistor LDR (gl5528)</li>
+                    <li>Resistor de 150Ω</li>
+                    <li>Fios de cobre encapados</li>
+                </ul>
+            </section>
 
-        <section id="texto4" class="conteudo-topico"
-            role="tabpanel" aria-labelledby="aba4" tabindex="0" hidden>
-            <p>Coloque aqui o texto do quarto tópico.</p>
-        </section>
+            <section id="texto4" class="conteudo-topico" role="tabpanel" aria-labelledby="aba4" tabindex="0" hidden>
+                <h3>Explicação do Código do Arduino</h3>
+                <p>A linguagem de programação adotada pelo Arduino é baseada em C++ e C. Em sua estrutura
+                    padrão, existem as funções setup e loop, ambas do tipo void. No código, existe, inicialmente, a
+                    declaração de um ponto flutuante chamado tensao, atribuído com o valor 0. A função void setup
+                    apenas inicializa o monitor serial com taxa de transmissão serial de 9600 baud, o qual foi
+                    importante para controle e visualização dos dados durante o esboço do projeto. Logo em seguida,
+                    existem duas funções do tipo float, declaradas como Emax e Emin, que retornam, respectivamente,
+                    os valores máximos e mínimos de iluminância. Ambas as funções possuem como parâmetro um tipo
+                    float.</p>
+                <p>Na abertura da função void loop, há a atribuição do valor lido na entrada analógica A0 do
+                    arduino, multiplicada por 5 e dividida por 1023, à variável tensao. Essa atribuição ocorre com esse
+                    fator de multiplicação por conta da faixa de resolução que deve ser utilizada. O Arduino Uno realiza
+                    a leitura de uma entrada analógica dividindo sua resolução em 1024 partes, de 0 a 1023. Além disso,
+                    o valor lido deve estar compreendido entre 0 e 5, pois corresponde à diferença de potencial
+                    fornecida pela fonte de tensão. Dessa forma, para que o valor lido esteja dentro da tensão aplicada
+                    e,
+                    para que os valores possuam as corretas subdivisões de acordo com a resolução do
+                    microcontrolador, é necessário que haja essa multiplicação. Logo em sequência, existe a declaração
+                    e a atribuição de uma variável float luxMax, que recebe o valor retornado da função Emax, com
+                    argumento tensao. Assim, o valor que a função Emax gera quando aplica o valor de tensao é
+                    armazenado na variável luxMax. A declaração da variável float luxMin e sua atribuição com o valor
+                    de Emin quando esta recebe tensao como parâmetro ocorrerá similarmente.
+                    Por fim, as próximas funções transmitem os valores recebidos no monitor serial. Todas as
+                    instruções Serial.print estão escrevendo diretamente ou as strings escritas dentro dos parêntesis,
+                    ou
+                    as variáveis, enquanto que as instruções Serial.println fazem o mesmo, porém adicionando uma
+                    quebra de linha (“New Line”) ao final.</p>
+                <h3>Explicação do Código do Servidor</h3>
+                <h4>server.js</h4>
+                <p>O arquivo server.js tem a função de fazer a comunicação entre o Arduino e o site. Ele recebe os dados
+                    enviados pelo Arduino pelo USB/Serial, guarda os últimos valores recebidos e esses valores vão para
+                    o navegador. Para isso, é necessário duas bibliotecas: Express e SerialPort. O Express é usado para
+                    criar o servidor e as rotas do site, enquanto o SerialPort para que o Node.js se comunique com o
+                    Arduino pela porta Serial.</p>
+                <p>A comunicação com o Arduino é configurada pela porta COM5 e pela velocidade de 9600 baud. A porta
+                    COM5 é onde o Arduino está conectado no computador, e o baud representa a velocidade da comunicação
+                    Serial que é a velocidade em que os dados são enviados e recebidos.</p>
+                <p>O servidor possui um objeto chamado “dados”, que guarda os últimos valores recebidos do Arduino. Esse
+                    objeto guarda a tensão, o lux mínimo, o lux máximo e o estado da conexão. Ele apenas armazena os
+                    valores mais recentes:</p>
+                <pre><code>let dados = {
+    tensao: 0,
+    luxMin: 0,
+    luxMax: 0,
+    conectado: false
+};</code></pre>
+                <p>Quando o Arduino envia alguma informação, o server.js recebe esses dados pela porta Serial. Como os dados podem chegar em partes, o servidor vai juntando o texto até encontrar uma quebra de linha. Depois, ele separa as linhas e verifica qual informação foi recebida. Dessa forma, ele consegue identificar os valores de tensão, lux mínimo e lux máximo e atualizar o objeto dados com os novos valores.</p>
+                <pre><code>porta.on("data", (data) => {
+    linha += data.toString();
+    let linhas = linha.split("\n");
+    linha = linhas.pop();
 
-    </div>
+    linhas.forEach((texto) => {
+        texto = texto.trim();
+    });
+...</code></pre>
+                <p>O servidor também verifica o estado da conexão. Quando a porta Serial é aberta, ele considera que o Arduino está conectado e se fechada ou acontece algum erro, o estado passa para desconectado. Essa informação é usada posteriormente para mostrar o status do Arduino no site:</p>
+                <pre><code>porta.on("open", () => { dados.conectado = true;
+console.log("Arduino conectado");
+});
+porta.on("close", () => { dados.conectado = false;
+console.log("Arduino desconectado");
+}); </code></pre>
+                <p>Outra parte a detalhar é a rota /dados, que permite que o JavaScript do site tenha acesso às informações armazenadas no servidor. Quando essa rota é acessada, o servidor envia o objeto dados em formato JSON. JSON é um formato utilizado para organizar e enviar informações entre diferentes partes de um sistema:</p>
+                <pre><code>app.get("/dados", (req, res) => {
+    res.json(dados);
+});</code></pre>
+                <h4>script.js</h4>
+                <p>O arquivo script pega os dados que estão no servidor e atualiza as informações que aparecem na página.</p>
+                <p>A função principal é atualizarDados(). Ela utiliza o fetch() para fazer uma requisição para a rota /dados do servidor. O fetch() é usado para solicitar informações, e o await faz com que o JavaScript espere a resposta antes de continuar.</p>
+                <pre><code>const resposta = await fetch("/dados");</code></pre>
+                <pre><code>const dados = await resposta.json();</code></pre>
+                <p>Depois que o servidor responde, o json() muda os dados recebidos em um objeto que pode ser utilizado pelo JavaScript. Com isso, os valores de tensão, lux mínimo e lux máximo são colocados nos campos escolhidos no HTML.</p>
+                <p>O JavaScript também verifica o valor de dados.conectado. Dependendo desse valor, o texto da página é alterado para "Arduino conectado." ou "Arduino não conectado."</p>
+                <p>A função é executada novamente a cada 1 segundo, fazendo com que o site consulte novamente o servidor e atualize os valores automaticamente:</p>
+                <pre><code>setInterval(atualizarDados, 1000);</code></pre>
+                <h4>index.html</h4>
+                <p>O index.html define onde cada informação será mostrada ao usuário. Os valores de tensão, lux mínimo e lux máximo possuem um “id”. Quando o script.js recebe os dados do servidor, ele procura cada elemento pelo seu id e substitui esse conteúdo pelos valores mais recentes recebidos do Arduino.</p>
+                <pre><code>&lt;p&gt;Tensão no LDR: &lt;strong id="tensao"&gt;--&lt;/strong&gt; V&lt;/p&gt;
+&lt;p&gt;Lux mínimo estimado: &lt;strong id="luxMin"&gt;--&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Lux máximo estimado: &lt;strong id="luxMax"&gt;--&lt;/strong&gt;&lt;/p&gt;</code></pre>
+            </section>
 
-</main>
+        </div>
 
-<script src="../js/sobre.js"></script>
+    </main>
+
+    <script src="../js/sobre.js"></script>
 </body>
 
 </html>
