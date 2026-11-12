@@ -3,6 +3,7 @@
 // Node emq ue cria um servidor web, ele que recebe as requcições do web (framework)
 const express = require("express"); 
 const { SerialPort } = require("serialport");
+const path = require("path");
 //conversa com o usb
 
 //configuração da porta e rotas
@@ -100,7 +101,7 @@ porta.on("error", (erro) => {
 tentarConectar();
 setInterval(tentarConectar, 2000);
 // express, ele vai direcionar onde esta essa pasta para saber direcionar ao html
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "..")));
 
 //rota requisição
 app.get("/dados", (req, res) => {
